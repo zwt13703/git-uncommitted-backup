@@ -54,6 +54,11 @@ func (g *GitService) GetUncommittedFiles() ([]string, error) {
 		} else if status[1] != ' ' {
 			files = append(files, filename)
 		}
+
+		// 过滤掉本工具的可执行文件
+		if filename == "git-uncommitted-backup.exe" || filename == "git-stash-tool.exe" {
+			files = files[:len(files)-1]
+		}
 	}
 
 	if err := scanner.Err(); err != nil {

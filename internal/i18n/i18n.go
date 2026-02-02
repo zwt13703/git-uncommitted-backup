@@ -36,6 +36,12 @@ const (
 	KeyOutput                    = "output"
 	KeyNotGitRepo                = "not_git_repo"
 	KeyPleaseRunInGitRepo        = "please_run_in_git_repo"
+	KeyCreateDirFailed           = "create_dir_failed"
+	KeyCopyFailed                = "copy_failed"
+	KeyCopied                    = "copied"
+	KeySkippedDeletedFile        = "skipped_deleted_file"
+	KeyThankYou                  = "thank_you"
+	KeyTotal                     = "total"
 )
 
 func Init(lang string) {
@@ -95,6 +101,12 @@ func loadChinese() map[string]string {
 		KeyOutput:                    "输出",
 		KeyNotGitRepo:                "错误: 不是 Git 仓库",
 		KeyPleaseRunInGitRepo:        "请在 Git 仓库目录下运行此程序。",
+		KeyCreateDirFailed:           "创建目录失败",
+		KeyCopyFailed:                "复制失败",
+		KeyCopied:                    "已复制",
+		KeySkippedDeletedFile:        "跳过已删除的文件",
+		KeyThankYou:                  "感谢使用，再见！",
+		KeyTotal:                     "总计",
 	}
 }
 
@@ -126,6 +138,12 @@ func loadEnglish() map[string]string {
 		KeyOutput:                    "Output",
 		KeyNotGitRepo:                "Error: Not a git repository",
 		KeyPleaseRunInGitRepo:        "Please run this program in a git repository.",
+		KeyCreateDirFailed:           "Failed to create directory",
+		KeyCopyFailed:                "Failed to copy",
+		KeyCopied:                    "Copied",
+		KeySkippedDeletedFile:        "Skipped deleted file",
+		KeyThankYou:                  "Thank you for using, goodbye!",
+		KeyTotal:                     "Total",
 	}
 }
 

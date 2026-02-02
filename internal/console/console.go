@@ -1,7 +1,9 @@
 package console
 
 import (
-	"os/exec"
+	"os"
+	"syscall"
+	"unsafe"
 )
 
 const (
@@ -16,10 +18,28 @@ const (
 	ColorBold   = "\033[1m"
 )
 
-// Setup 初始化控制台支持 ANSI 颜色
+var (
+	kernel32                       = syscall.NewLazyDLL("kernel32.dll")
+	procSetConsoleOutputCP         = kernel32.NewProc("SetConsoleOutputCP")
+	procGetConsoleMode             = kernel32.NewProc("GetConsoleMode")
+	procSetConsoleMode             = kernel32.NewProc("SetConsoleMode")
+	ENABLE_VIRTUAL_TERMINAL_PROCESSING = uint32(0x0004)
+)
+
+// Setup 初始化控制台支持 ANSI 颜色和 UTF-8
 func Setup() {
+	// 设置控制台输出编码为 UTF-8 (CP65001)
+	procSetConsoleOutputCP.Call(65001)
+
 	// 在 Windows 上启用 ANSI 转义序列支持
-	exec.Command("cmd", "/c", "echo", "").Run()
+	stdoutHandle := syscall.Handle(os.Stdout.Fd())
+	var mode uint32
+
+	// 获取当前控制台模式
+	procGetConsoleMode.Call(uintptr(stdoutHandle), uintptr(unsafe.Pointer(&mode)))
+
+	// 设置新的模式，启用虚拟终端处理
+	procSetConsoleMode.Call(uintptr(stdoutHandle), uintptr(unsafe.Pointer(&mode)), uintptr(mode|ENABLE_VIRTUAL_TERMINAL_PROCESSING))
 }
 
 // PrintRed 红色输出

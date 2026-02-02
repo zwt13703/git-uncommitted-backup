@@ -26,7 +26,7 @@ func (f *FileService) BackupFiles(files []string, destinationDir string) (int, i
 	for _, file := range files {
 		// 检查文件是否存在（可能被删除了）
 		if _, err := os.Stat(file); os.IsNotExist(err) {
-			console.PrintYellow("  ⚠ " + i18n.Tf(i18n.KeySkipped+" deleted file: %s", file))
+			console.PrintYellow("  ⚠ " + i18n.Tf(i18n.KeySkippedDeletedFile+": %s", file))
 			skippedCount++
 			continue
 		}
@@ -37,17 +37,17 @@ func (f *FileService) BackupFiles(files []string, destinationDir string) (int, i
 		// 创建目标目录
 		destDir := filepath.Dir(destPath)
 		if err := os.MkdirAll(destDir, 0755); err != nil {
-			console.PrintRed("  ✗ " + fmt.Sprintf(i18n.T("create_dir_failed")+" %s: %v", destDir, err))
+			console.PrintRed("  ✗ " + fmt.Sprintf(i18n.T(i18n.KeyCreateDirFailed)+" %s: %v", destDir, err))
 			continue
 		}
 
 		// 复制文件
 		if err := copyFile(file, destPath); err != nil {
-			console.PrintRed("  ✗ " + fmt.Sprintf(i18n.T("copy_failed")+" %s: %v", file, err))
+			console.PrintRed("  ✗ " + fmt.Sprintf(i18n.T(i18n.KeyCopyFailed)+" %s: %v", file, err))
 			continue
 		}
 
-		console.PrintGreen("  ✓ " + i18n.T("copied") + ": " + file)
+		console.PrintGreen("  ✓ " + i18n.T(i18n.KeyCopied) + ": " + file)
 		successCount++
 	}
 
