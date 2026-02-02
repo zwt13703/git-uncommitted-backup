@@ -4,157 +4,158 @@
 [![Go](https://img.shields.io/badge/Go-1.21+-00ADD8?style=flat&logo=go)](https://golang.org/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-Git 未提交代码备份工具 - 一个帮助你备份和查看 Git 仓库中未提交代码的命令行工具。
+Git Uncommitted Backup - A command-line tool to help you backup and view uncommitted code in your Git repository.
 
-## 功能特性
+## Features
 
-- ✅ 查看当前分支下所有未提交的文件
-- ✅ 将未提交的代码连同目录结构一起备份到指定目录
-- ✅ 驳回未提交的代码（执行 `git reset --hard`）
-- ✅ 支持中英文界面
-- ✅ 彩色命令行界面，操作直观
-- ✅ 自动检测 Git 仓库环境
+- ✅ View all uncommitted files in the current branch
+- ✅ Backup uncommitted code to a specified directory with full directory structure
+- ✅ Reset uncommitted changes (execute `git reset --hard`)
+- ✅ Support for Chinese and English interfaces
+- ✅ Colorful command-line interface for intuitive operation
+- ✅ Automatic Git repository environment detection
 
-## 适用场景
+## Use Cases
 
-当你在错误的分支写了代码但还没有 commit 时，可以使用此工具：
+When you've written code in the wrong branch but haven't committed yet:
 
-1. 查看当前未提交的文件列表
-2. 将未提交的代码备份到指定目录
-3. 驳回当前分支的未提交更改
-4. 切换到正确的分支
-5. 将备份的文件复制回来并提交
+1. View the list of uncommitted files
+2. Backup the uncommitted code to a specified directory
+3. Reset the uncommitted changes in the current branch
+4. Switch to the correct branch
+5. Copy the backup files back and commit
 
-## 截图
+## Screenshots
 
 ```
 ╔══════════════════════════════════════════════════════════════╗
-║                    Git 未提交代码管理工具                      ║
+║                    Git Uncommitted Backup                    ║
 ╠══════════════════════════════════════════════════════════════╣
-║  版本: 1.0.0            作者: iFlow CLI                       ║
+║  Version: 1.0.0							                   ║
 ╠══════════════════════════════════════════════════════════════╣
 ║  GitHub: https://github.com/zwt13703/git-uncommitted-backup  ║
 ╚══════════════════════════════════════════════════════════════╝
 
 ══════════════════════════════════════════════════════════════
-  [1] 查看当前未提交的代码文件
-  [2] 将未提交的代码另存到指定目录
-  [3] 驳回未提交的代码 (git reset --hard)
-  [4] 退出程序
+  [1] View uncommitted files
+  [2] Backup uncommitted files to directory
+  [3] Reset uncommitted changes (git reset --hard)
+  [4] Exit program
 ══════════════════════════════════════════════════════════════
 ```
 
-## 下载
+## Download
 
 ### Windows
 
-下载最新版本的 `git-uncommitted-backup.exe` 文件，双击运行即可。
+Download the latest `git-uncommitted-backup.exe` file and double-click to run.
 
-### 源码编译
+### Build from Source
 
 ```bash
-# 克隆仓库
+# Clone the repository
 git clone https://github.com/zwt13703/git-uncommitted-backup.git
 cd git-uncommitted-backup
 
-# 编译
+# Build
 go build -o git-uncommitted-backup.exe
 ```
 
-## 使用方法
+## Usage
 
-### 1. 运行程序
+### 1. Run the Program
 
 ```bash
 # Windows
 git-uncommitted-backup.exe
 
-# 或从源码运行
+# Or run from source
 go run main.go
 ```
 
-### 2. 选择操作
+### 2. Select an Option
 
-程序启动后会显示交互式菜单：
+The program will display an interactive menu:
 
-- **[1] 查看当前未提交的代码文件** - 列出所有未提交的文件
-- **[2] 将未提交的代码另存到指定目录** - 备份未提交的代码
-- **[3] 驳回未提交的代码** - 执行 `git reset --hard`，注意此操作不可逆
-- **[4] 退出程序** - 退出工具
+- **[1] View uncommitted files** - List all uncommitted files
+- **[2] Backup uncommitted files to directory** - Backup uncommitted code
+- **[3] Reset uncommitted changes** - Execute `git reset --hard`, note this operation is irreversible
+- **[4] Exit program** - Exit the tool
 
-### 3. 典型工作流程
+### 3. Typical Workflow
 
 ```bash
-# 步骤 1: 运行工具
+# Step 1: Run the tool
 git-uncommitted-backup.exe
 
-# 步骤 2: 选择 [2] 备份未提交的代码
-# 输入备份目录，例如: C:\backup\my_code
+# Step 2: Select [2] to backup uncommitted code
+# Enter the backup directory, e.g., C:\backup\my_code
 
-# 步骤 3: 选择 [3] 驳回当前分支的未提交更改
-# 输入 YES 确认
+# Step 3: Select [3] to reset uncommitted changes in the current branch
+# Type YES to confirm
 
-# 步骤 4: 切换到正确的分支
+# Step 4: Switch to the correct branch
 git checkout correct-branch
 
-# 步骤 5: 将备份的文件复制回来
+# Step 5: Copy the backup files back
 xcopy C:\backup\my_code\* . /E /I /Y
 
-# 步骤 6: 提交代码
+# Step 6: Commit the code
 git add .
 git commit -m "your commit message"
 ```
 
-## 项目结构
+## Project Structure
 
 ```
 git-uncommitted-backup/
-├── main.go                 # 程序入口
-├── go.mod                  # Go 模块定义
-├── README.md               # 项目文档
-└── internal/               # 内部包
-    ├── config/             # 配置管理
+├── main.go                 # Program entry
+├── go.mod                  # Go module definition
+├── README.md               # Project documentation (English)
+├── README.zh-CN.md         # Project documentation (Chinese)
+└── internal/               # Internal packages
+    ├── config/             # Configuration management
     │   └── config.go
-    ├── console/            # 控制台输出
+    ├── console/            # Console output
     │   └── console.go
-    ├── i18n/               # 国际化
+    ├── i18n/               # Internationalization
     │   └── i18n.go
-    ├── service/            # 业务逻辑
-    │   ├── git.go          # Git 操作
-    │   └── file.go         # 文件操作
-    └── ui/                 # 用户界面
-        └── menu.go         # 菜单逻辑
+    ├── service/            # Business logic
+    │   ├── git.go          # Git operations
+    │   └── file.go         # File operations
+    └── ui/                 # User interface
+        └── menu.go         # Menu logic
 ```
 
-## 系统要求
+## System Requirements
 
-- Windows 10 或更高版本
-- Git 已安装并配置
-- 无需额外依赖
+- Windows 10 or higher
+- Git installed and configured
+- No additional dependencies required
 
-## 国际化
+## Internationalization
 
-工具支持中英文界面，语言会根据系统环境自动切换：
+The tool supports Chinese and English interfaces, which automatically switches based on system environment:
 
-- 中文环境 (zh-CN): 简体中文界面
-- 英文环境 (en-US): 英文界面
+- Chinese environment (zh-CN): Simplified Chinese interface
+- English environment (en-US): English interface
 
-## 安全性说明
+## Security Notes
 
-- **驳回操作警告**: 选择 [3] 驳回未提交代码时，需要输入 `YES` 确认，防止误操作
-- **非 Git 仓库检测**: 在非 Git 仓库中运行时，程序会给出友好的错误提示
+- **Reset Operation Warning**: When selecting [3] to reset uncommitted code, you need to type `YES` to confirm to prevent accidental operations
+- **Non-Git Repository Detection**: When running in a non-Git repository, the program will provide friendly error messages
 
-## 注意事项
+## Notes
 
-1. 在执行 [3] 驳回操作前，请确保已经备份了重要的未提交代码
-2. 程序必须在 Git 仓库目录下运行
-3. 备份操作会保持原有的目录结构
+1. Before performing the [3] reset operation, make sure you have backed up important uncommitted code
+2. The program must be run in a Git repository directory
+3. Backup operations preserve the original directory structure
 
-## 开发
+## Development
 
-### 添加新的翻译
+### Adding New Translations
 
-编辑 `internal/i18n/i18n.go` 文件：
+Edit `internal/i18n/i18n.go` file:
 
 ```go
 const (
@@ -174,33 +175,29 @@ func loadEnglish() map[string]string {
 }
 ```
 
-## 版本历史
+## Version History
 
 ### v1.0.0 (2026-02-02)
-- ✨ 初始版本发布
-- ✨ 支持查看未提交文件
-- ✨ 支持备份未提交代码
-- ✨ 支持驳回未提交代码
-- ✨ 中英文界面支持
-- ✨ 彩色命令行界面
-- ✨ 非 Git 仓库错误处理
+- ✨ Initial release
+- ✨ Support viewing uncommitted files
+- ✨ Support backing up uncommitted code
+- ✨ Support resetting uncommitted code
+- ✨ Chinese and English interface support
+- ✨ Colorful command-line interface
+- ✨ Non-Git repository error handling
 
-## 贡献
+## Contributing
 
-欢迎提交 Issue 和 Pull Request！
+Issues and Pull Requests are welcome!
 
-## 许可证
+## License
 
 MIT License
 
-## 作者
-
-iFlow CLI
-
-## 仓库地址
+## Repository
 
 https://github.com/zwt13703/git-uncommitted-backup
 
 ---
 
-**免责声明**: 使用本工具时请谨慎操作，特别是在执行驳回操作前请确保已备份重要数据。
+**Disclaimer**: Please use this tool with caution, especially ensure important data is backed up before performing reset operations.
