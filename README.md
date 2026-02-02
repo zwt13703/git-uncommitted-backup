@@ -1,6 +1,6 @@
 # Git Uncommitted Backup
 
-[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/iflowcli/git-uncommitted-backup)
+[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/zwt13703/git-uncommitted-backup)
 [![Go](https://img.shields.io/badge/Go-1.21+-00ADD8?style=flat&logo=go)](https://golang.org/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
@@ -33,7 +33,7 @@ Git 未提交代码备份工具 - 一个帮助你备份和查看 Git 仓库中�
 ╠══════════════════════════════════════════════════════════════╣
 ║  版本: 1.0.0            作者: iFlow CLI                       ║
 ╠══════════════════════════════════════════════════════════════╣
-║  GitHub: https://github.com/iflowcli/git-stash-tool          ║
+║  GitHub: https://github.com/zwt13703/git-uncommitted-backup  ║
 ╚══════════════════════════════════════════════════════════════╝
 
 ══════════════════════════════════════════════════════════════
@@ -54,7 +54,7 @@ Git 未提交代码备份工具 - 一个帮助你备份和查看 Git 仓库中�
 
 ```bash
 # 克隆仓库
-git clone https://github.com/iflowcli/git-uncommitted-backup.git
+git clone https://github.com/zwt13703/git-uncommitted-backup.git
 cd git-uncommitted-backup
 
 # 编译
@@ -199,7 +199,7 @@ iFlow CLI
 
 ## 仓库地址
 
-https://github.com/iflowcli/git-uncommitted-backup
+https://github.com/zwt13703/git-uncommitted-backup
 
 ---
 
